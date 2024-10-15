@@ -89,7 +89,7 @@ namespace WindowsFormsApp5
         // Метод сортировки выбором иаксимума
         private void SelectionSort()
         {
-            if (useCriticalSections) Monitor.Enter(lockObject); // Вход в критическую секцию
+            if (useCriticalSections) Monitor.Enter(lockObject); 
 
             for (int i = 0; i < 10; i++)
             {
@@ -110,14 +110,14 @@ namespace WindowsFormsApp5
                 array2[i] = temp;
             }
 
-            if (useCriticalSections) semaphore2.Release(); // Разрешение для завершения работы
+            if (useCriticalSections) semaphore2.Release();
             if (!useCriticalSections)
             {
                 Invoke(new Action(() => txtSortedArray.Text += "Сортировка методом выбора максимума (массив в потоке) : " + string.Join(", ", array2) + Environment.NewLine));
             }
             Invoke(new Action(() => txtSortedArray.Text += "Сортировка методом выбора максимума (оригинальный массив): " + string.Join(", ", array) + Environment.NewLine));
 
-            if (useCriticalSections) Monitor.Exit(lockObject); // Выход из критической секции
+            if (useCriticalSections) Monitor.Exit(lockObject); 
         }
 
     }
